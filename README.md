@@ -1,7 +1,9 @@
 # Chefsaid-Mobile-App
 
 Author: Jared Horton
+
 Contributors: Tech With Tim, Sentdex
+
 Published: 5/20/2020
 
 Chefsaid is a simple mobile app I made that allows the user to input any ingredients in their kitchen.
