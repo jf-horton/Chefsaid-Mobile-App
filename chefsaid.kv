@@ -1,0 +1,187 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+
+<WindowManager>:
+    transition: NoTransition()
+    Kitchen:
+    Cookbook:
+    AddRecipe:
+
+<Kitchen>:
+    name: "kitchen"
+    on_pre_enter: root.load_screen()
+
+    item: food
+    quantity: count
+    food_panel: food_panel
+
+    GridLayout:
+        cols:2
+        size_hint: (1, .15)
+        pos_hint: {'left':1, 'top':1}
+        Button:
+            background_normal: ''
+            background_color: (0, 0.2, .5, 1)
+            text:"Kitchen"
+            on_release:
+                app.root.current = "kitchen"
+        Button:
+            text:"Cookbook"
+            on_release:
+                app.root.current = "cookbook"
+    GridLayout:
+        cols:3
+        size_hint: (1, .075)
+        pos_hint: {'center_x':.5, 'top':.83}
+        TextInput:
+            id: food
+            multiline: False
+            hint_text: "food item"
+        TextInput:
+            id: count
+            multiline: False
+            hint_text: "10"
+        Button:
+            text: 'Add Item'
+            on_press: root.add_item_and_refresh()
+    GridLayout:
+        cols: 1
+        size_hint: (1, .73)
+        pos_hint: {'left':1, 'bottom':1}
+        ScrollView:
+            RepeatingPanel:
+                id: food_panel
+                cols: 2
+                height: self.minimum_height
+                size_hint_y: None
+
+<Cookbook>:
+    name: "cookbook"
+    on_pre_enter: root.update_recipe_list()
+    recipe_panel: recipe_panel
+    GridLayout:
+        cols:2
+        size_hint: (1, .15)
+        pos_hint: {'left':1, 'top':1}
+        Button:
+            text:"Kitchen"
+            on_release:
+                app.root.current = "kitchen"
+        Button:
+            text:"Cookbook"
+            background_normal: ''
+            background_color: (0, 0.2, .5, 1)
+            on_release:
+                app.root.current = "cookbook"
+    GridLayout:
+        cols: 1
+        size_hint: (.3, .075)
+        pos_hint: {'center_x':.5, 'top':.83}
+        Button:
+            text: '+ New Recipe'
+            on_press:
+                app.root.current = 'add recipe'
+    GridLayout:
+        cols: 1
+        size_hint: (1, .73)
+        pos_hint: {'left':1, 'bottom':1}
+        ScrollView:
+            RepeatingPanel:
+                id: recipe_panel
+                cols: 5
+                height: self.minimum_height
+                size_hint_y: None
+
+<AddRecipe>:
+    name: 'add recipe'
+    on_enter:
+        if app.edit_recipe: root.edit_recipe()
+    food_panel: food_panel
+    instruction_panel: instruction_panel
+    recipe_title: recipe_title
+    item: food
+    quantity: amount
+    step: step
+    GridLayout:
+        cols: 2
+        size_hint: (1, .1)
+        pos_hint: {"top": 1}
+        Button:
+            text: 'Back'
+            on_press:
+                root.clear_recipe()
+                app.edit_recipe = False
+                app.root.current = "cookbook"
+        Button:
+            text: 'Save Recipe'
+            on_press:
+                root.save_and_clear()
+            on_release:
+                if root.no_errors and root.overwrite: app.root.current = "cookbook"
+    GridLayout:
+        cols: 1
+        size_hint: (1, .1)
+        pos_hint: {"top": .9}
+        TextInput:
+            id: recipe_title
+            multiline: False
+            font_size: 35
+            hint_text: "Recipe Name"
+    GridLayout:
+        cols:3
+        size_hint: (1, .05)
+        pos_hint: {"top": .8}
+        TextInput:
+            id: food
+            multiline: False
+            hint_text: "food item"
+        TextInput:
+            id: amount
+            multiline: False
+            hint_text: "10"
+        Button:
+            text: 'Add Item'
+            on_press: root.add_item_and_refresh()
+    GridLayout:
+        cols: 1
+        size_hint: (1, .05)
+        pos_hint: {"top": .75}
+        Label:
+            text: 'INGREDIENTS'
+    GridLayout:
+        cols: 1
+        size_hint: (1, .25)
+        pos_hint: {"top": .7}
+        ScrollView:
+            RepeatingPanel:
+                id: food_panel
+                cols: 3
+                height: self.minimum_height
+                size_hint_y: None
+    GridLayout:
+        cols:3
+        size_hint: (1, .15)
+        pos_hint: {"top": .44}
+        TextInput:
+            id: step
+            multiline: True
+            hint_text: "First, make sure the food items are completely thawed."
+        Button:
+            text: 'Add Step'
+            on_press: root.add_step_and_refresh()
+    GridLayout:
+        cols: 1
+        size_hint: (1, .05)
+        pos_hint: {"top": .29}
+        Label:
+            text: 'INSTRUCTIONS'
+    GridLayout:
+        cols: 1
+        size_hint: (1, .24)
+        pos_hint: {"top": .24}
+        ScrollView:
+            RepeatingPanel:
+                id: instruction_panel
+                cols: 3
+                height: self.minimum_height
+                size_hint_y: None
