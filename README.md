@@ -14,7 +14,8 @@ Things to be improved:
 1. As of right now, when you add ingredients to your kitchen stock or to a recipe, the recipe ingredients
 and the stock ingredients must be spelled the same, otherwise you won't be able to use the recipe. This
 could be solved by creating a drop-down menu where the user could choose which ingredients to add. Adding
-this feature would prevent the user from making typos.
+this feature would prevent the user from making typos. However, kivy doesn't support a dropdown widget,
+so it would have to be custom made.
 
 2. Obviously there are many units for ingredients. There are so many that, for the sake of simplicity, I
 decided not to have a feature specifying which units one must use for ingredients. I leave it up to the
