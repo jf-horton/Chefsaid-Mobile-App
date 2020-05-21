@@ -13,8 +13,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 
-
-#Window.size = (335, 640)
+# Mobile screen size
+Window.size = (335, 640)
 kivy.require("1.11.0")
 
 conn = sqlite3.connect('database.db')
@@ -37,7 +37,7 @@ class Kitchen(Screen):
     quantity = ObjectProperty(None)
     food_panel = ObjectProperty(None)
     stock = {}
-    # *** this dictionary will have only one key value pair at all times
+    # *** new_stock will have only one key value pair at all times
     # so we can update the database correctly
     new_stock = {}
     curs.execute('CREATE TABLE IF NOT EXISTS stock(item TEXT, quantity REAL, step TEXT)')
