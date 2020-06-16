@@ -14,7 +14,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 # Mobile screen size
-Window.size = (335, 640)
+#Window.size = (335, 640)
 kivy.require("1.11.0")
 
 conn = sqlite3.connect('database.db')
