@@ -32,7 +32,7 @@ Also, if your kitchen stock list isn't showing up, switch screens to let it resh
 should be self-explanatory.
 
 Deploying the app on Android:
-I followed a series of tutorials on Youtube and used the Buildozer on a Linux OS.
+I followed a series of tutorials on Youtube and used the Buildozer tool on a Linux OS.
 https://www.youtube.com/playlist?list=PLy5hjmUzdc0l8SKdyS9LNbhZm3AYxrk_p 
 
 Permissions:
