@@ -24,7 +24,16 @@ for any other powder or liquid ingredient you can use a cup as the common unit. 
 specify in the recipe instructions what units should be used.
 
 3. The GUI is not the most pretty but it wasn't meant to be. I built this app for the purpose of learning
-how the kivy framework works and also learn how sqlite3 works. It's my first time using both.
+how the kivy framework works and also learn how sqlite3 works. It's my first time using both:)
+
+Using the app:
+When creating a recipe, make sure that the recipe title has no spaces. The app will crash otherwise. 
+Also, if your kitchen stock list isn't showing up, switch screens to let it reshresh. Everything else 
+should be self-explanatory.
+
+Deploying the app on Android:
+I followed a series of tutorials on Youtube and used the Buildozer on a Linux OS.
+https://www.youtube.com/playlist?list=PLy5hjmUzdc0l8SKdyS9LNbhZm3AYxrk_p 
 
 Permissions:
 Feel free to copy and paste whatever you find useful in my code. I'm all about open source software. Just
